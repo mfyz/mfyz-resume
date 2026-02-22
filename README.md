@@ -2,31 +2,42 @@
 
 Personal resume toolkit — monorepo with two packages sharing a single `resume.yaml`.
 
+## `npx fatih-yildiz`
+
+View my resume in your terminal:
+
+```bash
+npx fatih-yildiz
+```
+
+Zero dependencies. Just a single vanilla JS file and bundled YAML data — no frameworks, no network calls, nothing sketchy. [Read the source](packages/cli/cli.js), it's ~400 lines.
+
 ## Packages
 
-### `mfyz` (npm)
+### `fatih-yildiz` ([npm](https://www.npmjs.com/package/fatih-yildiz))
 
-Interactive CLI resume. Run `npx mfyz` to see it in your terminal.
+Terminal resume with ANSI colors, formatted for 80-char width.
 
-- Zero dependencies — Node builtins only
+- Zero dependencies — Node.js builtins only (`fs`, `path`)
 - Single JS file + bundled YAML data
-- Published to npm as `mfyz`
-
-**Status:** Not yet implemented
+- No network requests, no telemetry
 
 ### `@mfyz/resume-generator` (private)
 
-PDF/HTML/Markdown resume generation powered by [yamlresume](https://yamlresume.dev/).
+PDF/HTML/Markdown generation powered by [yamlresume](https://yamlresume.dev/).
 
 - Validates `resume.yaml` against yamlresume schema
-- Generates HTML (calm template), Markdown, and PDF (moderncv-banking template)
+- Generates HTML (calm template), Markdown, and PDF (moderncv-classic template)
 - PDF via LaTeX using tectonic
 
-## Quick Start
+## Development
 
 ```bash
 # Install dependencies
 npm install
+
+# Run CLI locally
+node packages/cli/cli.js
 
 # Validate resume data
 npm run validate -w packages/generator
@@ -51,19 +62,18 @@ First build is slow (downloads LaTeX packages). Subsequent builds are fast.
 
 ```
 mfyz-resume/
-├── resume.yaml              ← Source of truth
-├── package.json             ← Workspace root
+├── resume.yaml              <- Source of truth
+├── package.json             <- Workspace root
 ├── packages/
-│   ├── cli/                 ← npx mfyz (not yet built)
-│   └── generator/           ← yamlresume PDF/HTML/MD generation
-├── source/                  ← Reference PDFs (gitignored)
-└── plan.md                  ← Implementation plan
+│   ├── cli/                 <- npx fatih-yildiz
+│   └── generator/           <- yamlresume PDF/HTML/MD generation
+└── source/                  <- Reference PDFs (gitignored)
 ```
 
 ## Resume Data
 
-`resume.yaml` follows the [yamlresume schema](https://yamlresume.dev/docs/compiler/schema) which is compatible with JSON Resume. Edit the YAML, validate, and regenerate.
+`resume.yaml` follows the [yamlresume schema](https://yamlresume.dev/docs/compiler/schema) which is compatible with JSON Resume.
 
 ## License
 
-Private repository.
+MIT

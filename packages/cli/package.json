@@ -1,9 +1,9 @@
 {
-  "name": "mfyz",
+  "name": "fatih-yildiz",
   "version": "1.0.0",
-  "description": "Fatih Yildiz — interactive resume in your terminal",
+  "description": "Fatih Felix Yildiz — interactive resume in your terminal",
   "bin": {
-    "mfyz": "./cli.js"
+    "fatih-yildiz": "./cli.js"
   },
   "files": [
     "cli.js",
@@ -19,6 +19,15 @@
     "terminal",
     "npx"
   ],
-  "author": "Fatih Yildiz <fatih@mfyz.com> (https://mfyz.com)",
-  "license": "MIT"
+  "author": "Fatih Felix Yildiz <fatih@mfyz.com> (https://mfyz.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mfyz/mfyz-resume.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://github.com/mfyz/mfyz-resume#readme",
+  "bugs": {
+    "url": "https://github.com/mfyz/mfyz-resume/issues"
+  }
 }
