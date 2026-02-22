@@ -12,13 +12,10 @@ const c = {
   italic: '\x1b[3m',
   underline: '\x1b[4m',
   // colors (256-color for light/dark theme compatibility)
-  white: '\x1b[97m',
   gray: '\x1b[90m',
   sky: '\x1b[38;5;33m',       // sky blue - section headers
   orange: '\x1b[38;5;208m',   // orange - highlighted numbers
   pink: '\x1b[35m',           // magenta/pink - company names
-  green: '\x1b[32m',
-  blue: '\x1b[34m',
 };
 
 // ── Layout constants ───────────────────────────────────────────────────────
@@ -36,8 +33,9 @@ const sectionHeader = (title) =>
 function highlightNumbers(text) {
   // Bold+yellow numbers like "13x", "2.5x", "3m", "60%", "2000+", "50%"
   // Also handles ranges like "1-1" as a single unit
+  // Reset dim before orange, restore dim after — so orange is full brightness
   return text.replace(/(\d[\d,.]*(?:\+|x|%|m|mm|bn|k)?(?:[-–]\d[\d,.]*(?:\+|x|%)?)?)/g,
-    `${c.bold}${c.orange}$1${c.reset}${c.dim}`);
+    `${c.reset}${c.bold}${c.orange}$1${c.reset}${c.dim}`);
 }
 
 function wordWrap(text, maxWidth) {
@@ -273,7 +271,7 @@ function render(data) {
   const boxInner = boxW - 4; // 2 border + 2 inner padding
   p(pad(`${c.sky}╭${'─'.repeat(boxW - 2)}╮${c.reset}`));
 
-  const nameLine = `${c.bold}${c.white}${basics.name || ''}${c.reset}`;
+  const nameLine = `${c.bold}${basics.name || ''}${c.reset}`;
   const nameLen = (basics.name || '').length;
   p(pad(`${c.sky}│${c.reset}  ${nameLine}${' '.repeat(Math.max(0, boxInner - nameLen))}${c.sky}│${c.reset}`));
 
@@ -305,14 +303,10 @@ function render(data) {
     p('');
 
     for (const job of work) {
-      const title = `${c.bold}${c.white}${job.position || ''}${c.reset}`;
-      const dates = `${c.dim}${dateRange(job.startDate, job.endDate)}${c.reset}`;
-      const titleLen = (job.position || '').length;
-      const datesLen = dateRange(job.startDate, job.endDate).length;
-      const titleLine = rightAlign(job.position || '', dateRange(job.startDate, job.endDate), INNER - 2);
-
-      // render with colors
-      p(line(`  ${c.bold}${c.white}${job.position || ''}${c.reset}${' '.repeat(Math.max(2, INNER - 2 - titleLen - datesLen))}${c.dim}${dateRange(job.startDate, job.endDate)}${c.reset}`));
+      const posText = job.position || '';
+      const dateText = dateRange(job.startDate, job.endDate);
+      const gap = Math.max(2, INNER - 2 - posText.length - dateText.length);
+      p(line(`  ${c.bold}${posText}${c.reset}${' '.repeat(gap)}${c.dim}${dateText}${c.reset}`));
       const companyParts = [job.name || ''];
       if (job.location) companyParts.push(job.location);
       p(line(`  ${c.pink}${companyParts.join('  ·  ')}${c.reset}`));
