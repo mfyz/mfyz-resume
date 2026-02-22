@@ -1,0 +1,271 @@
+# yaml-language-server: $schema=https://yamlresume.dev/schema.json
+
+basics:
+  name: Fatih Yildiz
+  headline: Principal Technical Product Manager
+  email: fatih@mfyz.com
+  phone: "+1 (917) 275-2838"
+  url: https://mfyz.com
+  summary: >
+    20+ years experienced Software Developer turned Product Manager.
+    I design digital products, implement and launch them, nurture, and manage
+    the product, project, and team. 85 products launched (35 designed),
+    142 coded commercially, 178 repos on GitHub — 41 clients managed,
+    82 teammates collaborated 1-1.
+
+work:
+  - name: The Washington Post / Arc XP
+    position: Principal Technical Product Manager
+    startDate: "2023-07"
+    summary: >
+      Promoted through three TPM levels in 2 years. Leading platform product
+      strategy for Arc XP, a content management and digital experience platform
+      serving 2000+ newsrooms worldwide. Driving API modernization, developer
+      experience, and platform architecture decisions.
+    keywords:
+      - Product Management
+      - Platform Architecture
+      - API Design
+      - CMS
+
+  - name: The Washington Post / Arc XP
+    position: Sr. Technical Product Manager
+    startDate: "2022-04"
+    endDate: "2023-07"
+    summary: >
+      Led cross-functional product initiatives for Arc XP platform, managing
+      technical roadmap and stakeholder alignment across engineering,
+      design, and editorial teams.
+    keywords:
+      - Technical PM
+      - Roadmap
+      - Stakeholder Management
+
+  - name: The Washington Post / Arc XP
+    position: Technical Product Manager
+    startDate: "2021-06"
+    endDate: "2022-04"
+    summary: >
+      Managed product development lifecycle for content management platform
+      features, working closely with engineering teams on technical
+      specifications and release planning.
+    keywords:
+      - Product Development
+      - Release Management
+
+  - name: StartSure
+    position: Head of Information Technology and Product Management
+    startDate: "2018-06"
+    endDate: "2025-02"
+    summary: >
+      Built an insur-tech platform with integration to the largest insurance
+      provider in the US. Led technology strategy, product vision, and
+      full-stack implementation.
+    keywords:
+      - InsurTech
+      - Platform Architecture
+      - Full Stack
+
+  - name: NoMad Interactive
+    position: CTO, Founder
+    startDate: "2017-01"
+    summary: >
+      Founded a digital agency creating products with focus on mobile, web,
+      and e-commerce. Grew a loyalty program's digital user base 13x and
+      increased mobile DAU 8x within the first year. Increased e-commerce
+      conversion rate 2.5x through creating cross-program single sign-on
+      service. Reduced a project's tech team costs by 50%, third-party
+      services cost by 80%, cloud infrastructure costs by 25%.
+    keywords:
+      - Agency
+      - E-commerce
+      - Mobile
+      - SSO
+
+  - name: Makook Studio
+    position: Product Manager
+    startDate: "2015-12"
+    endDate: "2017-01"
+    summary: >
+      Digital product studio working exclusively with $2bn+ conglomerate
+      (Al Tayer Group) in GCC region, focus on retail and customer loyalty.
+      Led team of 9 engineers and 4 designers. Hired 10 and transformed
+      onsite team to fully remote. Managed product roadmap over 60 release
+      cycles. Created 100+ weekly product strategy and performance reports
+      to executives.
+    keywords:
+      - Team Leadership
+      - Retail
+      - Loyalty Programs
+      - Remote Teams
+
+  - name: Moonit Labs
+    position: Product Manager, Co-founder
+    startDate: "2010-12"
+    endDate: "2015-12"
+    summary: >
+      Tech startup with a mobile social network product. Designed, launched,
+      and scaled a global social network mobile app to 3 million users.
+      Managed product roadmap of 13 products through 46 mobile and 16 web
+      releases. Reduced mobile acquisition cost by 40% and increased in-app
+      purchases by 20%.
+    keywords:
+      - Startup
+      - Mobile
+      - Social Network
+      - Growth
+
+  - name: Nexum Boğaziçi
+    position: Frontend Web Developer
+    startDate: "2010-02"
+    endDate: "2010-09"
+    summary: >
+      Technology company serving brands like Sony, Bosch, Siemens, Microsoft,
+      Peugeot. Collaborated in 50+ member team to create a CMS platform for
+      Bosch/Siemens powering 80+ domains globally across multiple regions
+      and languages. Co-architected UX and UI interactions, decreasing
+      front-end load times by 60%.
+    keywords:
+      - Frontend
+      - CMS
+      - Enterprise
+
+  - name: Wanda Digital
+    position: Analyst Web Developer
+    startDate: "2009-04"
+    endDate: "2010-02"
+    summary: >
+      Digital advertising agency as solution partner of BBDO, providing
+      creative services for brands like P&G (Gillette), FritoLay (Doritos,
+      Ruffles, Lays), Renault, and Greenpeace. Led technical product
+      development of 19 advertising-based gamified experiences. Implemented
+      detailed analytics and tracking for behavioral analysis.
+    keywords:
+      - Advertising
+      - Gamification
+      - Analytics
+
+  - name: Kılavuz Denetim
+    position: Web Developer, Managing Partner
+    startDate: "2003"
+    endDate: "2009"
+    summary: >
+      Professional services and technology consulting company. Assembled
+      development teams per project to design, implement, and launch tech
+      products with different stacks. Re-launched an education/tutoring
+      platform with 1000+ paying subscribers.
+    keywords:
+      - Consulting
+      - EdTech
+      - Team Building
+
+  - name: Win Media Technologies
+    position: Web Developer
+    startDate: "2003"
+    endDate: "2005"
+    summary: >
+      Web hosting company providing custom web development services.
+      Built Turkey Basketball League Portal, Eurobasket Turkey Page,
+      and Escort Computer e-Commerce System.
+    keywords:
+      - Web Development
+      - E-commerce
+
+education:
+  - institution: Ankara Üniversitesi
+    degree: Bachelor
+    area: Statistics
+    startDate: "2002"
+    endDate: "2008"
+
+  - institution: Kocatepe Mimar Kemal Lisesi
+    degree: High School
+    area: General Studies
+    startDate: "1999"
+    endDate: "2002"
+
+skills:
+  - name: Product Management
+    level: Expert
+    keywords:
+      - Roadmap Strategy
+      - Stakeholder Management
+      - Technical Specs
+      - Release Planning
+      - A/B Testing
+
+  - name: Engineering Leadership
+    level: Expert
+    keywords:
+      - Team Building
+      - Cross-functional Collaboration
+      - Agile/Scrum
+      - Hiring
+
+  - name: Full Stack Development
+    level: Expert
+    keywords:
+      - TypeScript
+      - React
+      - Next.js
+      - Node.js
+      - Python
+
+  - name: Infrastructure & DevOps
+    level: Advanced
+    keywords:
+      - AWS
+      - Docker
+      - CI/CD
+      - Terraform
+
+  - name: UX/UI Design
+    level: Advanced
+    keywords:
+      - Product Design
+      - Prototyping
+      - User Research
+      - Data Analytics
+
+certificates:
+  - name: Product-led Certification
+    issuer: Pendo.io
+    date: "2023-01"
+
+  - name: Product Analytics Certification
+    issuer: Pendo.io
+    date: "2023-03"
+
+  - name: Product Management
+    issuer: ICAgile
+    date: "2023-03"
+
+languages:
+  - language: Turkish
+    fluency: Native/Bilingual
+
+  - language: English
+    fluency: Full Professional
+
+projects:
+  - name: mfyz.com
+    startDate: "2007"
+    summary: >
+      Personal tech blog running for 15+ years, covering web development,
+      product management, and technology trends. Built with Astro.
+    url: https://mfyz.com
+
+  - name: PanelOne
+    startDate: "2023"
+    summary: >
+      Co-founded a Shopify analytics and store management platform.
+      Built with Next.js, React, and Shopify APIs.
+    url: https://panelone.io
+
+layouts:
+  - engine: latex
+    template: moderncv-banking
+    page:
+      showPageNumbers: false
+    typography:
+      fontSize: 11pt

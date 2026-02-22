@@ -1,0 +1,13 @@
+{
+  "name": "@mfyz/resume-generator",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "validate": "yamlresume validate ../../resume.yaml",
+    "build": "yamlresume build ../../resume.yaml -o output/",
+    "dev": "yamlresume dev ../../resume.yaml -o output/"
+  },
+  "dependencies": {
+    "yamlresume": "latest"
+  }
+}
