@@ -11,14 +11,14 @@ const c = {
   dim: '\x1b[2m',
   italic: '\x1b[3m',
   underline: '\x1b[4m',
-  // colors
+  // colors (256-color for light/dark theme compatibility)
   white: '\x1b[97m',
   gray: '\x1b[90m',
-  cyan: '\x1b[36m',
-  yellow: '\x1b[33m',
+  sky: '\x1b[38;5;33m',       // sky blue - section headers
+  orange: '\x1b[38;5;208m',   // orange - highlighted numbers
+  pink: '\x1b[35m',           // magenta/pink - company names
   green: '\x1b[32m',
   blue: '\x1b[34m',
-  magenta: '\x1b[35m',
 };
 
 // ── Layout constants ───────────────────────────────────────────────────────
@@ -31,13 +31,13 @@ const pad = (s = '') => ' '.repeat(PAD) + s;
 const line = (s = '') => pad(s);
 const hr = (char = '─') => pad(c.dim + char.repeat(INNER) + c.reset);
 const sectionHeader = (title) =>
-  pad(`${c.bold}${c.cyan} ${title.toUpperCase()} ${c.dim}${'─'.repeat(Math.max(0, INNER - title.length - 3))}${c.reset}`);
+  pad(`${c.bold}${c.sky} ${title.toUpperCase()} ${c.dim}${'─'.repeat(Math.max(0, INNER - title.length - 3))}${c.reset}`);
 
 function highlightNumbers(text) {
   // Bold+yellow numbers like "13x", "2.5x", "3m", "60%", "2000+", "50%"
   // Also handles ranges like "1-1" as a single unit
   return text.replace(/(\d[\d,.]*(?:\+|x|%|m|mm|bn|k)?(?:[-–]\d[\d,.]*(?:\+|x|%)?)?)/g,
-    `${c.bold}${c.yellow}$1${c.reset}${c.dim}`);
+    `${c.bold}${c.orange}$1${c.reset}${c.dim}`);
 }
 
 function wordWrap(text, maxWidth) {
@@ -271,23 +271,23 @@ function render(data) {
   // ── Header box ──
   const boxW = INNER;
   const boxInner = boxW - 4; // 2 border + 2 inner padding
-  p(pad(`${c.cyan}╭${'─'.repeat(boxW - 2)}╮${c.reset}`));
+  p(pad(`${c.sky}╭${'─'.repeat(boxW - 2)}╮${c.reset}`));
 
   const nameLine = `${c.bold}${c.white}${basics.name || ''}${c.reset}`;
   const nameLen = (basics.name || '').length;
-  p(pad(`${c.cyan}│${c.reset}  ${nameLine}${' '.repeat(Math.max(0, boxInner - nameLen))}${c.cyan}│${c.reset}`));
+  p(pad(`${c.sky}│${c.reset}  ${nameLine}${' '.repeat(Math.max(0, boxInner - nameLen))}${c.sky}│${c.reset}`));
 
   const headline = basics.headline || '';
-  p(pad(`${c.cyan}│${c.reset}  ${c.yellow}${headline}${c.reset}${' '.repeat(Math.max(0, boxInner - headline.length))}${c.cyan}│${c.reset}`));
+  p(pad(`${c.sky}│${c.reset}  ${c.orange}${headline}${c.reset}${' '.repeat(Math.max(0, boxInner - headline.length))}${c.sky}│${c.reset}`));
 
   const contactParts = [];
   if (basics.email) contactParts.push(basics.email);
   if (basics.url) contactParts.push(basics.url);
   if (basics.phone) contactParts.push(basics.phone);
   const contactLine = contactParts.join(' · ');
-  p(pad(`${c.cyan}│${c.reset}  ${c.dim}${contactLine}${c.reset}${' '.repeat(Math.max(0, boxInner - contactLine.length))}${c.cyan}│${c.reset}`));
+  p(pad(`${c.sky}│${c.reset}  ${c.dim}${contactLine}${c.reset}${' '.repeat(Math.max(0, boxInner - contactLine.length))}${c.sky}│${c.reset}`));
 
-  p(pad(`${c.cyan}╰${'─'.repeat(boxW - 2)}╯${c.reset}`));
+  p(pad(`${c.sky}╰${'─'.repeat(boxW - 2)}╯${c.reset}`));
   p('');
 
   // ── Summary ──
@@ -315,7 +315,7 @@ function render(data) {
       p(line(`  ${c.bold}${c.white}${job.position || ''}${c.reset}${' '.repeat(Math.max(2, INNER - 2 - titleLen - datesLen))}${c.dim}${dateRange(job.startDate, job.endDate)}${c.reset}`));
       const companyParts = [job.name || ''];
       if (job.location) companyParts.push(job.location);
-      p(line(`  ${c.magenta}${companyParts.join('  ·  ')}${c.reset}`));
+      p(line(`  ${c.pink}${companyParts.join('  ·  ')}${c.reset}`));
 
       // full summary with highlighted numbers
       if (job.summary) {
@@ -389,14 +389,14 @@ function render(data) {
   p(sectionHeader('In Numbers'));
   p('');
   const col1 = [
-    `${c.bold}${c.yellow}85${c.reset} products launched`,
-    `${c.bold}${c.yellow}35${c.reset} products designed`,
-    `${c.bold}${c.yellow}41${c.reset} clients managed`,
+    `${c.bold}${c.orange}85${c.reset} products launched`,
+    `${c.bold}${c.orange}35${c.reset} products designed`,
+    `${c.bold}${c.orange}41${c.reset} clients managed`,
   ];
   const col2 = [
-    `${c.bold}${c.yellow}142${c.reset} coded commercially`,
-    `${c.bold}${c.yellow}178${c.reset} repos on GitHub`,
-    `${c.bold}${c.yellow}82${c.reset} teammates 1-1`,
+    `${c.bold}${c.orange}142${c.reset} coded commercially`,
+    `${c.bold}${c.orange}178${c.reset} repos on GitHub`,
+    `${c.bold}${c.orange}82${c.reset} teammates 1-1`,
   ];
   for (let i = 0; i < col1.length; i++) {
     // pad col1 to fixed visible width for alignment
