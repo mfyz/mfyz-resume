@@ -1,0 +1,24 @@
+{
+  "name": "mfyz",
+  "version": "1.0.0",
+  "description": "Fatih Yildiz — interactive resume in your terminal",
+  "bin": {
+    "mfyz": "./cli.js"
+  },
+  "files": [
+    "cli.js",
+    "resume.yaml"
+  ],
+  "scripts": {
+    "prepublishOnly": "cp ../../resume.yaml .",
+    "start": "node cli.js"
+  },
+  "keywords": [
+    "resume",
+    "cli",
+    "terminal",
+    "npx"
+  ],
+  "author": "Fatih Yildiz <fatih@mfyz.com> (https://mfyz.com)",
+  "license": "MIT"
+}
