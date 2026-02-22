@@ -308,15 +308,10 @@ function render(data) {
       p(line(`  ${c.bold}${c.white}${job.position || ''}${c.reset}${' '.repeat(Math.max(2, INNER - 2 - titleLen - datesLen))}${c.dim}${dateRange(job.startDate, job.endDate)}${c.reset}`));
       p(line(`  ${c.cyan}${job.name || ''}${c.reset}`));
 
-      // summary highlight (max 2 lines)
+      // full summary
       if (job.summary) {
         const sumLines = wordWrap(job.summary, INNER - 4);
-        const maxLines = 2;
-        for (let i = 0; i < Math.min(sumLines.length, maxLines); i++) {
-          let sl = sumLines[i];
-          if (i === maxLines - 1 && sumLines.length > maxLines) {
-            sl = sl.slice(0, INNER - 7) + '...';
-          }
+        for (const sl of sumLines) {
           p(line(`  ${c.dim}${sl}${c.reset}`));
         }
       }
@@ -370,7 +365,9 @@ function render(data) {
       p(line(`  ${c.bold}${proj.name}${c.reset}${url}`));
       if (proj.summary) {
         const sumLines = wordWrap(proj.summary, INNER - 4);
-        p(line(`  ${c.dim}${sumLines[0]}${c.reset}`));
+        for (const sl of sumLines) {
+          p(line(`  ${c.dim}${sl}${c.reset}`));
+        }
       }
     }
     p('');
@@ -380,12 +377,8 @@ function render(data) {
   if (certificates.length > 0) {
     p(sectionHeader('Certifications'));
     p('');
-    const certLine = certificates.map(cert =>
-      `${cert.name} (${cert.issuer})`
-    ).join('  ·  ');
-    const certLines = wordWrap(certLine, INNER - 2);
-    for (const cl of certLines) {
-      p(line(`  ${c.dim}${cl}${c.reset}`));
+    for (const cert of certificates) {
+      p(line(`  ${c.dim}${cert.name}${c.reset}  ${c.dim}${cert.issuer || ''}${c.reset}`));
     }
     p('');
   }
