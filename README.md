@@ -19,8 +19,8 @@ Interactive CLI resume. Run `npx mfyz` to see it in your terminal.
 PDF/HTML/Markdown resume generation powered by [yamlresume](https://yamlresume.dev/).
 
 - Validates `resume.yaml` against yamlresume schema
-- Generates HTML (calm template) and Markdown
-- PDF generation via LaTeX (requires xelatex or tectonic)
+- Generates HTML (calm template), Markdown, and PDF (moderncv-banking template)
+- PDF via LaTeX using tectonic
 
 ## Quick Start
 
@@ -31,23 +31,21 @@ npm install
 # Validate resume data
 npm run validate -w packages/generator
 
-# Generate HTML + Markdown
+# Generate HTML, Markdown, and PDF
 npm run build -w packages/generator
 ```
 
 Output goes to `packages/generator/output/` (gitignored).
 
-### PDF Generation
+### Prerequisites
 
-PDF requires a LaTeX engine. Install one of:
+PDF generation requires a LaTeX engine:
 
 ```bash
-brew install --cask basictex   # lightweight (~300MB)
-# or
-brew install tectonic           # standalone compiler
+brew install tectonic
 ```
 
-Then uncomment the latex layout in `resume.yaml`.
+First build is slow (downloads LaTeX packages). Subsequent builds are fast.
 
 ## Structure
 
@@ -57,7 +55,7 @@ mfyz-resume/
 ├── package.json             ← Workspace root
 ├── packages/
 │   ├── cli/                 ← npx mfyz (not yet built)
-│   └── generator/           ← yamlresume PDF/HTML generation
+│   └── generator/           ← yamlresume PDF/HTML/MD generation
 ├── source/                  ← Reference PDFs (gitignored)
 └── plan.md                  ← Implementation plan
 ```

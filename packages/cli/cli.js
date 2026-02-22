@@ -20,7 +20,7 @@ const c = {
 
 // ── Layout constants ───────────────────────────────────────────────────────
 const WIDTH = 80;
-const PAD = 2;
+const PAD = 1;
 const INNER = WIDTH - PAD * 2; // 76 usable chars
 
 // ── Helpers ────────────────────────────────────────────────────────────────
@@ -34,7 +34,7 @@ function highlightNumbers(text) {
   // Bold+yellow numbers like "13x", "2.5x", "3m", "60%", "2000+", "50%"
   // Also handles ranges like "1-1" as a single unit
   // Reset dim before orange, restore dim after — so orange is full brightness
-  return text.replace(/(\d[\d,.]*(?:\+|x|%|m|mm|bn|k)?(?:[-–]\d[\d,.]*(?:\+|x|%)?)?)/g,
+  return text.replace(/(\$?\d[\d,.]*(?:\+|x|%|m|mm|bn|k)?(?:\+)?(?:[-–]\d[\d,.]*(?:\+|x|%)?)?)/g,
     `${c.reset}${c.bold}${c.orange}$1${c.reset}${c.dim}`);
 }
 
@@ -64,9 +64,8 @@ function formatDate(d) {
   if (!d) return 'Present';
   const s = String(d);
   if (s.length === 4) return s; // just year
-  const [y, m] = s.split('-');
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  return months[parseInt(m, 10) - 1] + ' ' + y;
+  const [y] = s.split('-');
+  return y;
 }
 
 function dateRange(start, end) {
@@ -401,25 +400,12 @@ function render(data) {
   }
   p('');
 
-  // ── Footer ──
   p(hr());
-  const pkg = getPkgVersion();
-  const footer = `npx mfyz · v${pkg}`;
-  const footerPad = Math.floor((INNER - footer.length) / 2);
-  p(pad(`${' '.repeat(footerPad)}${c.dim}${footer}${c.reset}`));
   p('');
 
   return out.join('\n');
 }
 
-function getPkgVersion() {
-  try {
-    const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'), 'utf8'));
-    return pkg.version || '1.0.0';
-  } catch {
-    return '1.0.0';
-  }
-}
 
 // ── Main ───────────────────────────────────────────────────────────────────
 function main() {

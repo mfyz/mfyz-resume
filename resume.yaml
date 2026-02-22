@@ -8,11 +8,11 @@ content:
     phone: "+1 917 275 2838"
     url: https://mfyz.com
     summary: >
-      20+ years experienced Software Developer turned Product Manager.
-      I design digital products, implement and launch them, nurture, and manage
-      the product, project, and team. 85 products launched (35 designed),
-      142 coded commercially, 178 repos on GitHub — 41 clients managed,
-      82 teammates collaborated 1-1.
+      25+ years leading product strategy with a strong software engineering
+      background. Built and launched 85 products across enterprise, startups,
+      and agencies — from a platform powering 200+ of the world's largest
+      newsrooms to insur-tech, e-commerce, and mobile social platforms.
+      Hands-on technical depth with 142 commercially shipped codebases.
 
   work:
     - name: The Washington Post / Arc XP
@@ -22,32 +22,35 @@ content:
       summary: >
         Promoted through three TPM levels (TPM → Sr. TPM → Principal) in
         2 years. Leading platform product strategy for Arc XP, a content
-        management and digital experience platform serving 2000+ newsrooms
-        worldwide. Driving API modernization, developer experience, and
-        platform architecture decisions across engineering, design, and
-        editorial teams.
+        management and digital experience platform serving 200+ newsrooms
+        powering 2,500+ websites, mobile and OTT experiences reaching 8bn+
+        monthly readership. Driving API, SDK, and CLI strategy, developer
+        relationships and developer experience, and platform architecture
+        decisions across engineering, design, and editorial teams.
       keywords:
         - Product Management
         - Platform Architecture
         - API Design
+        - SDK
+        - Developer Experience
         - CMS
 
     - name: PanelOne
-      position: Head of Product & Engineering
-      location: New York, NY (Remote)
+      position: Head of Product & Engineering, Advisor
+      location: Los Angeles, CA (Remote)
       startDate: "2023-06"
       summary: >
-        Co-founded a Shopify analytics and store management platform.
-        Leading product vision, engineering architecture, and full-stack
-        development. Built with Next.js, React, and Shopify APIs.
+        Co-founded a CPG brokerage sales intelligence and CRM platform.
+        Advising on product strategy, engineering architecture, and
+        technical direction.
       keywords:
-        - Shopify
+        - CPG
         - SaaS
-        - React
+        - CRM
         - Product Leadership
 
     - name: StartSure
-      position: Head of Information Technology and Product Management
+      position: Head of IT & Product Management
       location: New York, NY
       startDate: "2018-06"
       endDate: "2025-02"
@@ -64,6 +67,7 @@ content:
       position: CTO, Founder
       location: New York, NY (Remote)
       startDate: "2017-01"
+      endDate: "2025-12"
       summary: >
         Founded a digital agency creating products with focus on mobile, web,
         and e-commerce. Grew a loyalty program's digital user base 13x and
