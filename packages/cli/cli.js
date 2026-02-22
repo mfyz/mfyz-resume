@@ -33,6 +33,13 @@ const hr = (char = '─') => pad(c.dim + char.repeat(INNER) + c.reset);
 const sectionHeader = (title) =>
   pad(`${c.bold}${c.cyan} ${title.toUpperCase()} ${c.dim}${'─'.repeat(Math.max(0, INNER - title.length - 3))}${c.reset}`);
 
+function highlightNumbers(text) {
+  // Bold+yellow numbers like "13x", "2.5x", "3m", "60%", "2000+", "50%"
+  // Also handles ranges like "1-1" as a single unit
+  return text.replace(/(\d[\d,.]*(?:\+|x|%|m|mm|bn|k)?(?:[-–]\d[\d,.]*(?:\+|x|%)?)?)/g,
+    `${c.bold}${c.yellow}$1${c.reset}${c.dim}`);
+}
+
 function wordWrap(text, maxWidth) {
   const words = text.replace(/\s+/g, ' ').trim().split(' ');
   const lines = [];
@@ -287,7 +294,7 @@ function render(data) {
   if (basics.summary) {
     const summaryLines = wordWrap(basics.summary, INNER - 2);
     for (const sl of summaryLines) {
-      p(line(`  ${c.dim}${sl}${c.reset}`));
+      p(line(`  ${c.dim}${highlightNumbers(sl)}${c.reset}`));
     }
     p('');
   }
@@ -308,13 +315,13 @@ function render(data) {
       p(line(`  ${c.bold}${c.white}${job.position || ''}${c.reset}${' '.repeat(Math.max(2, INNER - 2 - titleLen - datesLen))}${c.dim}${dateRange(job.startDate, job.endDate)}${c.reset}`));
       const companyParts = [job.name || ''];
       if (job.location) companyParts.push(job.location);
-      p(line(`  ${c.cyan}${companyParts.join('  ·  ')}${c.reset}`));
+      p(line(`  ${c.magenta}${companyParts.join('  ·  ')}${c.reset}`));
 
-      // full summary
+      // full summary with highlighted numbers
       if (job.summary) {
         const sumLines = wordWrap(job.summary, INNER - 4);
         for (const sl of sumLines) {
-          p(line(`  ${c.dim}${sl}${c.reset}`));
+          p(line(`  ${c.dim}${highlightNumbers(sl)}${c.reset}`));
         }
       }
       p('');
