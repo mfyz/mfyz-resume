@@ -305,8 +305,9 @@ function render(data) {
     for (const job of work) {
       const posText = job.position || '';
       const dateText = dateRange(job.startDate, job.endDate);
-      const gap = Math.max(2, INNER - 2 - posText.length - dateText.length);
-      p(line(`  ${c.bold}${posText}${c.reset}${' '.repeat(gap)}${c.dim}${dateText}${c.reset}`));
+      const fillLen = Math.max(2, INNER - 2 - posText.length - dateText.length - 2);
+      const fill = ' ' + c.gray + '·'.repeat(fillLen) + c.reset + ' ';
+      p(line(`  ${c.bold}${posText}${c.reset}${fill}${c.dim}${dateText}${c.reset}`));
       const companyParts = [job.name || ''];
       if (job.location) companyParts.push(job.location);
       p(line(`  ${c.pink}${companyParts.join('  ·  ')}${c.reset}`));
