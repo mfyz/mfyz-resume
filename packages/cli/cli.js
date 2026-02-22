@@ -251,7 +251,7 @@ function render(data) {
   const work = content.work || [];
   const education = content.education || [];
   const skills = content.skills || [];
-  const projects = content.projects || [];
+  // projects intentionally omitted from CLI output
   const languages = content.languages || [];
   const certificates = content.certificates || [];
 
@@ -306,7 +306,9 @@ function render(data) {
 
       // render with colors
       p(line(`  ${c.bold}${c.white}${job.position || ''}${c.reset}${' '.repeat(Math.max(2, INNER - 2 - titleLen - datesLen))}${c.dim}${dateRange(job.startDate, job.endDate)}${c.reset}`));
-      p(line(`  ${c.cyan}${job.name || ''}${c.reset}`));
+      const companyParts = [job.name || ''];
+      if (job.location) companyParts.push(job.location);
+      p(line(`  ${c.cyan}${companyParts.join('  ·  ')}${c.reset}`));
 
       // full summary
       if (job.summary) {
@@ -349,26 +351,8 @@ function render(data) {
     for (const edu of education) {
       if (edu.degree === 'High School') continue; // skip high school
       const degreeArea = [edu.degree, edu.area].filter(Boolean).join(' in ');
-      const dates = dateRange(edu.startDate, edu.endDate);
-      p(line(`  ${c.bold}${degreeArea}${c.reset}  ${c.dim}${edu.institution || ''}${c.reset}`));
-    }
-    p('');
-  }
-
-  // ── Projects ──
-  if (projects.length > 0) {
-    p(sectionHeader('Projects'));
-    p('');
-
-    for (const proj of projects) {
-      const url = proj.url ? `  ${c.dim}${proj.url}${c.reset}` : '';
-      p(line(`  ${c.bold}${proj.name}${c.reset}${url}`));
-      if (proj.summary) {
-        const sumLines = wordWrap(proj.summary, INNER - 4);
-        for (const sl of sumLines) {
-          p(line(`  ${c.dim}${sl}${c.reset}`));
-        }
-      }
+      const years = dateRange(edu.startDate, edu.endDate);
+      p(line(`  ${c.bold}${degreeArea}${c.reset}  ${c.dim}${edu.institution || ''}  ${years}${c.reset}`));
     }
     p('');
   }
@@ -378,7 +362,8 @@ function render(data) {
     p(sectionHeader('Certifications'));
     p('');
     for (const cert of certificates) {
-      p(line(`  ${c.dim}${cert.name}${c.reset}  ${c.dim}${cert.issuer || ''}${c.reset}`));
+      const year = cert.date ? formatDate(cert.date) : '';
+      p(line(`  ${c.dim}${cert.name}${c.reset}  ${c.dim}${cert.issuer || ''}${year ? '  ' + year : ''}${c.reset}`));
     }
     p('');
   }
