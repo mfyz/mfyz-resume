@@ -369,15 +369,6 @@ function render(data) {
     p('');
   }
 
-  // ── Languages ──
-  if (languages.length > 0) {
-    const langLine = languages.map(l => {
-      const fluency = (l.fluency || '').replace(' Proficiency', '');
-      return `${l.language} (${fluency})`;
-    }).join('  ·  ');
-    p(line(`  ${c.dim}${langLine}${c.reset}`));
-    p('');
-  }
 
   // ── In Numbers (from summary) ──
   p(sectionHeader('In Numbers'));

@@ -5,6 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "node packages/cli/cli.js"
+    "start": "node packages/cli/cli.js",
+    "generate": "npm run build -w packages/generator"
   }
 }

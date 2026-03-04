@@ -20,8 +20,7 @@ content:
       location: New York, NY
       startDate: "2021-06"
       summary: >
-        Promoted through three TPM levels (TPM → Sr. TPM → Principal) in
-        2 years. Leading platform product strategy for Arc XP, a content
+        Leading platform product strategy for Arc XP, a content
         management and digital experience platform serving 200+ newsrooms
         powering 2,500+ websites, mobile and OTT experiences reaching 8bn+
         monthly readership. Driving API, SDK, and CLI strategy, developer
@@ -176,19 +175,6 @@ content:
         - Web Development
         - E-commerce
 
-  education:
-    - institution: Ankara Üniversitesi, Turkey
-      degree: Bachelor
-      area: Statistics
-      startDate: "2002"
-      endDate: "2008"
-
-    - institution: Kocatepe Mimar Kemal Lisesi, Turkey
-      degree: High School
-      area: General Studies
-      startDate: "1999"
-      endDate: "2002"
-
   skills:
     - name: Product Management
       level: Expert
@@ -232,6 +218,13 @@ content:
         - User Research
         - Data Analytics
 
+  education:
+    - institution: Ankara University, Turkey
+      degree: Bachelor
+      area: Statistics
+      startDate: "2002"
+      endDate: "2008"
+
   certificates:
     - name: Product-led Certification
       issuer: Pendo.io
@@ -256,7 +249,7 @@ layouts:
   - engine: html
     template: calm
   - engine: latex
-    template: moderncv-classic
+    template: moderncv-banking
     page:
       showPageNumbers: false
     typography:
